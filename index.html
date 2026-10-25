@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OmniFlix - Custom Unlimited Streamer</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar / Menu Navigasi -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-play-circle"></i>
+                <h2>OmniFlix</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="active" onclick="switchTab('home')"><i class="fa-solid fa-house"></i> Beranda & Film</li>
+                <li onclick="switchTab('admin')"><i class="fa-solid fa-cloud-arrow-up"></i> Panel Dev (Mass Upload)</li>
+            </ul>
+        </aside>
+
+        <!-- Konten Utama -->
+        <main class="main-content">
+            <!-- TAB 1: BERANDA / KATALOG FILM -->
+            <section id="home-tab" class="tab-section active">
+                <header class="top-bar">
+                    <h1>Katalog Video & Film</h1>
+                    <div class="search-box">
+                        <i class="fa-solid fa-search"></i>
+                        <input type="text" id="search-input" placeholder="Cari judul film...">
+                    </div>
+                </header>
+
+                <div class="video-grid" id="video-grid">
+                    <!-- Daftar film akan muncul otomatis di sini -->
+                </div>
+            </section>
+
+            <!-- TAB 2: PANEL ADMIN (MASS UPLOAD LINK) -->
+            <section id="admin-tab" class="tab-section">
+                <header class="top-bar">
+                    <h1>Developer Mass Upload Panel</h1>
+                </header>
+                <div class="admin-panel">
+                    <div class="form-group">
+                        <label>Masukkan Banyak Link Sekaligus (Format: <code>Judul | Link Embed/Video</code> per baris)</label>
+                        <textarea id="bulk-input" rows="8" placeholder="Contoh:
+Spider-Man | https://www.youtube.com/embed/dQw4w9WgXcQ
+Naruto Shippuden | https://www.youtube.com/embed/dQw4w9WgXcQ
+Anime Terbaru Eps 1 | https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4"></textarea>
+                    </div>
+                    <button id="bulk-upload-btn" class="btn-primary"><i class="fa-solid fa-upload"></i> Proses & Tambahkan Semua Sekaligus</button>
+                    <p class="hint">*Tips Dev: Masukkan format <code>Judul | Link</code> baris per baris. Sistem bakal otomatis nambahin ratusan video dalam 1 klik tanpa batas durasi!</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- MODAL PEMUTAR VIDEO (Nonton di dalam web) -->
+    <div class="modal" id="video-modal">
+        <div class="modal-content">
+            <button class="close-modal" id="close-modal"><i class="fa-solid fa-xmark"></i></button>
+            <h2 id="modal-title">Judul Film</h2>
+            <div class="player-wrapper" id="player-container">
+                <!-- Video player otomatis menyesuaikan link -->
+            </div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
